@@ -5,26 +5,66 @@
 {% endblock %}
 
 {% block body %}
-<div class = "content">
-    <h1>Task Master</h1>
 
-    <table border="1px">
+<style>
+    body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.content{
+    margin:0 auto;
+    width: 400px;
+}
+
+table, td, th {
+    border: 1px solid #aaa;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th{
+    height: 30px;
+}
+
+td{
+    text-align: center;
+}
+
+.form{
+    margin-top: 20px;
+}
+
+#content {
+    width: 70%;
+}
+</style>
+<div class = "content" style="margin:0 auto; width: 400px;">
+    <h1 style="text-align: center;">Task Master</h1>
+
+    <table border="1px" style="text-align:center;border-collapse: collapse;
+    width: 100%;">
         <tr>
             <th>Task</th>
             <th>Added</th>
             <th>Actions</th>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>
-                <a href="">Delete</a>
-                <br>
-                <a href="">Update</a>
-            </td>
-        </tr>
+        {% for task in tasks %}
+            <tr>
+                <td style="text-align: center;">{{ task.content }}</td>
+                <td style="text-align: center;">{{ task.date_created.date() }}</td>
+                <td style="text-align: center;">
+                    <a href="/delete/{{task.id}}">Delete</a>
+                    <br>
+                    <a href="/update/{{task.id}}">Update</a>
+                </td>
+            </tr>
+        {% endfor %}
     </table>
-    <form action = "/" method = "POST">
+    <form action = "/" method = "POST" style="margin-top: 20px;">
         <input type="text" name = "content" id = "content"/>
         <input type="submit" value="Add Task"/>
     </form>

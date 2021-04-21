@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Task Master</title>
+{% endblock %}
+
+{% block body %}
+
+<style>
+    body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.content{
+    margin:0 auto;
+    width: 400px;
+}
+
+table, td, th {
+    border: 1px solid #aaa;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th{
+    height: 30px;
+}
+
+td{
+    text-align: center;
+}
+
+.form{
+    margin-top: 20px;
+}
+
+#content {
+    width: 70%;
+}
+</style>
+<div class = "content" style="margin:0 auto; width: 400px;">
+    <h1 style="text-align: center;">Update Task</h1>
+
+<!--There was a table-->
+    <form action = "/update/{{task.id}}" method = "POST" style="margin-top: 20px;">
+        <input type="text" name = "content" id = "content"/>
+        <input type="submit" value="Add Task"/>
+    </form>
+</div>
+{% endblock %}
